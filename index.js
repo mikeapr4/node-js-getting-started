@@ -17,7 +17,7 @@ async function kickoff() {
 
   const pairs = [
     'binance.BTC-BUSD',
-    'binance.ETH-BUSD',
+    // 'binance.ETH-BUSD',
     // 'binance.LTC-BUSD',
     // 'binance.DOT-BUSD',
     // 'binance.FIL-BUSD',
