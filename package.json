@@ -12,7 +12,8 @@
   "dependencies": {
     "mongodb-memory-server": "^7.4.0",
     "shelljs": "^0.8.4",
-    "zenbot4": "github:DeviaVir/zenbot#unstable"
+    "zenbot4": "github:DeviaVir/zenbot#unstable",
+    "strip-color": "0.1.0"
   },
   "repository": {
     "type": "git",
