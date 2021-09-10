@@ -2,6 +2,7 @@ const { MongoMemoryServer } = require('mongodb-memory-server')
 const { spawn } = require('child_process')
 const { strategy } = require('./conf')
 const strip = require('strip-color')
+const { Buffer } = require('buffer')
 
 async function kickoff() {
   const mongod = await MongoMemoryServer.create()
@@ -33,7 +34,7 @@ async function kickoff() {
       { cwd: 'node_modules/zenbot4', env },
     )
     bot.stdout.on('data', (data) => {
-      console.log(strip(data.toString()));
+      console.log(strip(Buffer.from(data).toString()));
     })
     status[selector] = true
   
