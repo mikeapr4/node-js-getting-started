@@ -1,6 +1,7 @@
 const { MongoMemoryServer } = require('mongodb-memory-server')
 const { spawn } = require('child_process')
 const { strategy } = require('./conf')
+const strip = require('strip-color')
 
 async function kickoff() {
   const mongod = await MongoMemoryServer.create()
@@ -15,7 +16,7 @@ async function kickoff() {
 
   const pairs = [
     'binance.BTC-BUSD',
-    // 'binance.ETH-BUSD',
+    'binance.ETH-BUSD',
     // 'binance.LTC-BUSD',
     // 'binance.DOT-BUSD',
     // 'binance.FIL-BUSD',
@@ -28,9 +29,12 @@ async function kickoff() {
   pairs.forEach((selector) => {
     const bot = spawn(
       'node',
-      ['zenbot.js', 'trade', selector, '--conf=../../conf.js', '--paper', '--period=15m', `--run_for=${minsInDay}`],
-      { cwd: 'node_modules/zenbot4', env, stdio: 'inherit' },
+      ['zenbot.js', 'trade', selector, '--conf=../../conf.js', '--paper', '--period=15m'],
+      { cwd: 'node_modules/zenbot4', env },
     )
+    bot.stdout.on('data', (data) => {
+      console.log(strip(data));
+    })
     status[selector] = true
   
     bot.on('close', async () => {
