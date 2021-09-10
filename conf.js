@@ -24,6 +24,9 @@ c.binance.secret = process.env.ZENBOT_BINANCE_SECRET || 'YOUR-API-SECRET'
 c.order_type = 'taker'
 // Misc options:
 c.currency_capital = 200
+// avoid selling at a loss below this pct set to 0 to ensure selling at a higher price...
+c.max_sell_loss_pct = 80
+c.keep_lookback_periods = 20
 
 // Notifiers:
 c.notifiers = {}
