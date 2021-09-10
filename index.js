@@ -33,7 +33,7 @@ async function kickoff() {
       { cwd: 'node_modules/zenbot4', env },
     )
     bot.stdout.on('data', (data) => {
-      console.log(strip(data));
+      console.log(strip(data.toString()));
     })
     status[selector] = true
   
