@@ -1,12 +1,13 @@
-const { MongoMemoryServer } = require('mongodb-memory-server')
+// const { MongoMemoryServer } = require('mongodb-memory-server')
 const { spawn } = require('child_process')
 const { strategy } = require('./conf')
 const strip = require('strip-color')
 const { Buffer } = require('buffer')
 
 async function kickoff() {
-  const mongod = await MongoMemoryServer.create()
-  const uri = mongod.getUri()
+  // const mongod = await MongoMemoryServer.create()
+  // const uri = mongod.getUri()
+  const uri = "mongodb+srv://mikeapr4:G4eoeq65Bs1y0eIR@cluster0.uqaoq.mongodb.net/"
 
   const env = {
     ...process.env,
